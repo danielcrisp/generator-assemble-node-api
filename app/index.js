@@ -4,7 +4,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 
-var TemplateFrontendGenerator = yeoman.generators.Base.extend({
+var AssembleNodeApiGenerator = yeoman.generators.Base.extend({
   initializing: function () {
     this.pkg = require('../package.json');
   },
@@ -77,8 +77,6 @@ var TemplateFrontendGenerator = yeoman.generators.Base.extend({
       //
 
           this.dest.mkdir('app/www');
-          this.dest.mkdir('app/www/docs-assets');
-          this.dest.mkdir('app/www/docs-assets/js');
           this.dest.mkdir('app/www/images');
           this.dest.mkdir('app/www/scripts');
           this.dest.mkdir('app/www/scripts/controllers');
@@ -89,8 +87,6 @@ var TemplateFrontendGenerator = yeoman.generators.Base.extend({
           this.dest.mkdir('app/www/styles/includes/components');
           this.dest.mkdir('app/www/styles/includes/core');
           this.dest.mkdir('app/www/templates');
-          this.dest.mkdir('app/www/templates/components');
-          this.dest.mkdir('app/www/templates/docs');
           this.dest.mkdir('app/www/templates/helpers');
           this.dest.mkdir('app/www/templates/layouts');
           this.dest.mkdir('app/www/templates/pages');
@@ -99,9 +95,6 @@ var TemplateFrontendGenerator = yeoman.generators.Base.extend({
           // files
           this.src.copy('app/www/_robots.txt', 'app/www/robots.txt');
           this.src.copy('app/www/_favicon.ico', 'app/www/favicon.ico');
-
-          this.src.copy('app/www/docs-assets/js/_iframeResizer.contentWindow.js', 'app/www/docs-assets/js/iframeResizer.contentWindow.js');
-          this.src.copy('app/www/docs-assets/js/_iframeResizer.js', 'app/www/docs-assets/js/iframeResizer.js');
 
           this.src.copy('app/www/scripts/_main.js', 'app/www/scripts/main.js');
           this.src.copy('app/www/scripts/controllers/_example.js', 'app/www/scripts/controllers/example.js');
@@ -114,26 +107,14 @@ var TemplateFrontendGenerator = yeoman.generators.Base.extend({
           this.src.copy('app/www/styles/includes/core/__mixins.scss', 'app/www/styles/includes/core/_mixins.scss');
           this.src.copy('app/www/styles/includes/core/__variables.scss', 'app/www/styles/includes/core/_variables.scss');
 
-
-          this.src.copy('app/www/templates/components/_media-block.hbs', 'app/www/templates/components/media-block.hbs');
-
-          this.src.copy('app/www/templates/docs/_api-docs.hbs', 'app/www/templates/docs/api-docs.hbs');
-          this.src.copy('app/www/templates/docs/_component-library.hbs', 'app/www/templates/docs/component-library.hbs');
-          this.src.copy('app/www/templates/docs/_style-library-content.hbs', 'app/www/templates/docs/style-library-content.hbs');
-          this.src.copy('app/www/templates/docs/_style-library.hbs', 'app/www/templates/docs/style-library.hbs');
-
           this.src.copy('app/www/templates/helpers/_compare.js', 'app/www/templates/helpers/compare.js');
           this.src.copy('app/www/templates/helpers/_or.js', 'app/www/templates/helpers/or.js');
           this.src.copy('app/www/templates/helpers/_replaceStr.js', 'app/www/templates/helpers/replaceStr.js');
           this.src.copy('app/www/templates/helpers/_timestamp.js', 'app/www/templates/helpers/timestamp.js');
 
-          this.src.copy('app/www/templates/_index.hbs', 'app/www/templates/index.hbs');
-
-          this.src.copy('app/www/templates/layouts/_components.hbs', 'app/www/templates/layouts/components.hbs');
           this.src.copy('app/www/templates/layouts/_default.hbs', 'app/www/templates/layouts/default.hbs');
-          this.src.copy('app/www/templates/layouts/_pages.hbs', 'app/www/templates/layouts/pages.hbs');
 
-          this.src.copy('app/www/templates/pages/_template1.hbs', 'app/www/templates/pages/template1.hbs');
+          this.src.copy('app/www/templates/pages/_index.hbs', 'app/www/templates/pages/index.hbs');
           this.src.copy('app/www/templates/pages/_template2.hbs', 'app/www/templates/pages/template2.hbs');
           this.src.copy('app/www/templates/pages/_template3.hbs', 'app/www/templates/pages/template3.hbs');
           this.src.copy('app/www/templates/pages/_template3.1.hbs', 'app/www/templates/pages/template3.1.hbs');
@@ -222,4 +203,4 @@ var TemplateFrontendGenerator = yeoman.generators.Base.extend({
   }
 });
 
-module.exports = TemplateFrontendGenerator;
+module.exports = AssembleNodeApiGenerator;

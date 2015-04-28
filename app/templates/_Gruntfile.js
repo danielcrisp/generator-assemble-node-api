@@ -60,7 +60,7 @@ module.exports = function (grunt) {
                     livereload: '<%= connect.options.livereload %>'
                 },
                 files: [
-                    '<%= settings.paths.tmp %>/<%= settings.paths.www %>/pages/**/*.html',
+                    '<%= settings.paths.tmp %>/<%= settings.paths.www %>/**/*.html',
                     '<%= settings.paths.tmp %>/<%= settings.paths.www %>/styles/**/*.css',
                     '{<%= settings.paths.tmp %>,<%= settings.paths.app %>}/<%= settings.paths.www %>/scripts/**/*.js',
                     '<%= settings.paths.app %>/<%= settings.paths.www %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
@@ -294,15 +294,15 @@ module.exports = function (grunt) {
         },
         useminPrepare: {
             options: {
-                dest: '<%= settings.paths.dist %>/<%= settings.paths.www %>/pages'
+                dest: '<%= settings.paths.dist %>/<%= settings.paths.www %>/'
             },
-            html: '<%= settings.paths.tmp %>/<%= settings.paths.www %>/pages/{,*/}*.html'
+            html: '<%= settings.paths.tmp %>/<%= settings.paths.www %>/{,*/}*.html'
         },
         usemin: {
             options: {
-                dirs: ['<%= settings.paths.dist %>/<%= settings.paths.www %>/pages']
+                dirs: ['<%= settings.paths.dist %>/<%= settings.paths.www %>']
             },
-            html: ['<%= settings.paths.dist %>/<%= settings.paths.www %>/pages/{,*/}*.html'],
+            html: ['<%= settings.paths.dist %>/<%= settings.paths.www %>/{,*/}*.html'],
             css: ['<%= settings.paths.dist %>/<%= settings.paths.www %>/styles/{,*/}*.css']
         },
         imagemin: {
@@ -357,13 +357,8 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= settings.paths.tmp %>/<%= settings.paths.www %>',
-                    src: '*.html',
+                    src: '{,*/}*.html',
                     dest: '<%= settings.paths.dist %>/<%= settings.paths.www %>'
-                }, {
-                    expand: true,
-                    cwd: '<%= settings.paths.tmp %>/<%= settings.paths.www %>/pages',
-                    src: '*.html',
-                    dest: '<%= settings.paths.dist %>/<%= settings.paths.www %>/pages'
                 }]
             },
             deploy: {
@@ -432,8 +427,7 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,png,txt}',
                         'images/{,*/}*.{webp,gif}',
-                        'styles/fonts/{,*/}*.{eot,svg,ttf,woff}',
-                        'docs-assets/**/*'
+                        'styles/fonts/{,*/}*.{eot,svg,ttf,woff}'
                     ]
                 }, {
                     // node / iis stuff
@@ -471,16 +465,6 @@ module.exports = function (grunt) {
                     dest: '<%= settings.paths.dist %>/<%= settings.paths.apidocs %>',
                     src: [
                         '**'
-                    ]
-                }, {
-                    // project docs & components
-                    expand: true,
-                    dot: true,
-                    cwd: '<%= settings.paths.tmp %>/<%= settings.paths.www %>',
-                    dest: '<%= settings.paths.dist %>/<%= settings.paths.www %>',
-                    src: [
-                        'docs/**/*',
-                        'components/**/*'
                     ]
                 }]
             },
@@ -535,13 +519,7 @@ module.exports = function (grunt) {
                     development: true
                 },
                 files: [{
-                    '<%= settings.paths.tmp %>/<%= settings.paths.www %>/pages/': ['<%= settings.paths.app %>/<%= settings.paths.www %>/templates/pages/*.hbs']
-                }, {
-                    '<%= settings.paths.tmp %>/<%= settings.paths.www %>/components/': ['<%= settings.paths.app %>/<%= settings.paths.www %>/templates/components/*.hbs']
-                }, {
-                    '<%= settings.paths.tmp %>/<%= settings.paths.www %>/docs/': ['<%= settings.paths.app %>/<%= settings.paths.www %>/templates/docs/*.hbs']
-                }, {
-                    '<%= settings.paths.tmp %>/<%= settings.paths.www %>/': ['<%= settings.paths.app %>/<%= settings.paths.www %>/templates/index.hbs']
+                    '<%= settings.paths.tmp %>/<%= settings.paths.www %>/': ['<%= settings.paths.app %>/<%= settings.paths.www %>/templates/pages/*.hbs']
                 }]
             },
             release: {
@@ -550,13 +528,7 @@ module.exports = function (grunt) {
                 },
                 // same as server
                 files: [{
-                    '<%= settings.paths.tmp %>/<%= settings.paths.www %>/pages/': ['<%= settings.paths.app %>/<%= settings.paths.www %>/templates/pages/*.hbs']
-                }, {
-                    '<%= settings.paths.tmp %>/<%= settings.paths.www %>/components/': ['<%= settings.paths.app %>/<%= settings.paths.www %>/templates/components/*.hbs']
-                }, {
-                    '<%= settings.paths.tmp %>/<%= settings.paths.www %>/docs/': ['<%= settings.paths.app %>/<%= settings.paths.www %>/templates/docs/*.hbs']
-                }, {
-                    '<%= settings.paths.tmp %>/<%= settings.paths.www %>/': ['<%= settings.paths.app %>/<%= settings.paths.www %>/templates/*.hbs']
+                    '<%= settings.paths.tmp %>/<%= settings.paths.www %>/': ['<%= settings.paths.app %>/<%= settings.paths.www %>/templates/pages/*.hbs']
                 }]
             }
         },
@@ -581,7 +553,7 @@ module.exports = function (grunt) {
                     path: 'reports/app/validation-status.json',
                 },
                 files: {
-                    src: ['<%= settings.paths.tmp %>/<%= settings.paths.www %>/pages/**/*.html']
+                    src: ['<%= settings.paths.tmp %>/<%= settings.paths.www %>/**/*.html']
                 }
             },
             dist: {
@@ -589,7 +561,7 @@ module.exports = function (grunt) {
                     path: 'reports/dist/validation-status.json',
                 },
                 files: {
-                    src: ['<%= settings.paths.dist %>/<%= settings.paths.www %>/pages/**/*.html']
+                    src: ['<%= settings.paths.dist %>/<%= settings.paths.www %>/**/*.html']
                 }
             }
         },
@@ -621,15 +593,6 @@ module.exports = function (grunt) {
                 }, {
                     from: /var enableAuth = (true|false);/,
                     to: noauth ? 'var enableAuth = false;' : 'var enableAuth = true;'
-                }]
-            },
-            apidocs: {
-                src: ['<%= settings.paths.app %>/<%= settings.paths.apidocs %>/index.html'],
-                overwrite: true,
-                replacements: [{
-                    from: '</body>',
-                    // add the iframeResizer script
-                    to: '<script src="/docs-assets/js/iframeResizer.contentWindow.js"></script></body>'
                 }]
             }
         },
@@ -672,7 +635,6 @@ module.exports = function (grunt) {
             'autoprefixer',
 
             'apidoc',
-            'replace:apidocs',
 
             'configureProxies:www',
             'connect:www',
@@ -710,7 +672,6 @@ module.exports = function (grunt) {
         'clean:dist',
         'clean:apidocs',
         'apidoc',
-        'replace:apidocs',
         'replace:dist',
         'clean:plugins',
         'copy:plugins'
@@ -742,15 +703,15 @@ module.exports = function (grunt) {
     ]);
 
     // build the project, with developer stuff removed
-    grunt.registerTask('release', [
-        'prepare-build',
-        bump ? 'version::' + bump : 'noop',
-        'assemble:release', // use the release task here
-        'run-build',
-        'clean:release',
-        'copy:release',
-        'notify:release'
-    ]);
+    // grunt.registerTask('release', [
+    //     'prepare-build',
+    //     bump ? 'version::' + bump : 'noop',
+    //     'assemble:release', // use the release task here
+    //     'run-build',
+    //     'clean:release',
+    //     'copy:release',
+    //     'notify:release'
+    // ]);
 
     // grunt.registerTask('cleanDist', [
     //     'clean:dist'

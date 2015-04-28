@@ -1,6 +1,5 @@
 ---
 
-layout: pages.hbs
 template: true
 
 order: 1
@@ -20,7 +19,7 @@ description: This goes in the meta description
 <div class="wrapper">
 
     <div class="hero-unit">
-    	<h1>'Allo, 'Allo!</h1>
+        <h1>'Allo, 'Allo!</h1>
         <h2>This is {{name}}</h2>
     </div>
 
@@ -30,7 +29,7 @@ description: This goes in the meta description
 
 {{> global-scripts }}
 
-<!-- build:js(app/www/pages) ../scripts/controllers/example.js -->
-<script src="../scripts/controllers/example.js"></script>
+<!-- build:js(app/www) scripts/controllers/example.js -->
+<script src="scripts/controllers/example.js"></script>
 <!-- endbuild -->
 
