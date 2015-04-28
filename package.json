@@ -1,14 +1,14 @@
 {
-  "name": "generator-template-frontend",
+  "name": "generator-assemble-node-api",
   "version": "0.0.0",
-  "description": "Yeoman generator",
+  "description": "Yeoman generator for Assemble.io and Node API",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "gaia-srl/generator-template-frontend",
+  "repository": "danielcrisp/generator-assemble-node-api",
   "author": {
-    "name": "Gaia Srl",
-    "email": "info@gaia.is.it",
-    "url": "https://github.com/gaia-srl"
+    "name": "Daniel Crisp",
+    "email": "hello@danielcrisp.com",
+    "url": "https://github.com/danielcrisp"
   },
   "engines": {
     "node": ">=0.10.0"

@@ -14,7 +14,7 @@ var TemplateFrontendGenerator = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the legendary TemplateFrontEnd generator!'
+      'Welcome to the legendary Assemble.io Node API generator!'
     ));
 
     this.prompt({

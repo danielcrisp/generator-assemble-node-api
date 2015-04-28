@@ -3,5 +3,5 @@ node_js:
   - '0.10'
 before_install:
   - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator-template-frontend' ]; then cd .. && eval "mv $currentfolder generator-template-frontend" && cd generator-template-frontend; fi
+  - if [ "$currentfolder" != 'generator-assemble-node-api' ]; then cd .. && eval "mv $currentfolder generator-assemble-node-api" && cd generator-assemble-node-api; fi
 

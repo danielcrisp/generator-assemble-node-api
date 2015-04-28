@@ -1,4 +1,4 @@
-# generator-template-frontend
+# generator-assemble-node-api
 
 > [Yeoman](http://yeoman.io) generator
 
@@ -27,7 +27,7 @@ To install generator-template-frontend from npm, run:
 
 ```bash
 # coming soon
-npm install -g generator-template-frontend
+npm install -g generator-assemble-node-api
 ```
 
 In the meantime, clone the repo, `cd` into the directory and type `npm link` to link it as a local module
@@ -35,7 +35,7 @@ In the meantime, clone the repo, `cd` into the directory and type `npm link` to 
 Finally, initiate the generator:
 
 ```bash
-yo template-frontend
+yo assemble-node-api
 ```
 
 ### Getting To Know Yeoman
